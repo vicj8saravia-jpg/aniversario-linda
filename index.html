@@ -16,203 +16,241 @@ box-sizing:border-box;
 }
 
 body{
-overflow:hidden;
 background:#02020b;
+overflow-x:hidden;
 font-family:'Poppins',sans-serif;
 color:white;
-height:100vh;
+min-height:100vh;
 }
 
-canvas{
+.stars{
 position:fixed;
-top:0;
-left:0;
-z-index:-1;
-}
-
-.titulo{
-position:absolute;
-top:30px;
-width:100%;
-text-align:center;
-z-index:100;
-}
-
-.titulo h1{
-font-family:'Dancing Script',cursive;
-font-size:70px;
-color:#ff7ac8;
-text-shadow:0 0 25px #ff7ac8;
-}
-
-.titulo p{
-font-size:20px;
-letter-spacing:3px;
-}
-
-.galaxia{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-width:700px;
-height:700px;
-animation:girar 80s linear infinite;
-}
-
-@keyframes girar{
-from{
-transform:translate(-50%,-50%) rotate(0deg);
-}
-to{
-transform:translate(-50%,-50%) rotate(360deg);
-}
-}
-
-.centro{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:120px;
-color:#ff4da6;
-text-shadow:
-0 0 20px #ff4da6,
-0 0 40px #ff4da6,
-0 0 80px #ff4da6;
-z-index:20;
-}
-
-.foto{
-position:absolute;
-width:140px;
-height:140px;
-border-radius:20px;
-overflow:hidden;
-border:3px solid #ff7ac8;
-box-shadow:0 0 25px #ff7ac8;
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(8px);
-}
-
-.foto img{
 width:100%;
 height:100%;
+top:0;
+left:0;
+z-index:-2;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-family:'Dancing Script',cursive;
+font-size:80px;
+color:#ff7ac8;
+text-shadow:0 0 30px #ff7ac8;
+}
+
+.hero h2{
+margin-top:15px;
+font-size:28px;
+}
+
+.corazon{
+font-size:120px;
+margin-top:20px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.15);}
+100%{transform:scale(1);}
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+padding:50px;
+max-width:1400px;
+margin:auto;
+}
+
+.foto-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(255,105,180,.3);
+transition:.4s;
+}
+
+.foto-card:hover{
+transform:translateY(-10px);
+}
+
+.foto-card img{
+width:100%;
+height:350px;
 object-fit:cover;
 }
 
-.foto span{
-position:absolute;
-bottom:-55px;
-left:50%;
-transform:translateX(-50%);
-width:230px;
-font-size:13px;
-text-align:center;
-color:#ffd1ea;
-}
-
-.f1{top:0;left:280px;}
-.f2{top:120px;right:20px;}
-.f3{bottom:140px;right:40px;}
-.f4{bottom:0;left:280px;}
-.f5{bottom:140px;left:40px;}
-.f6{top:120px;left:20px;}
-.f7{top:280px;left:-60px;}
-
 .mensaje{
-position:absolute;
-color:#ff7ac8;
-font-weight:bold;
-animation:flotar 8s infinite alternate;
-text-shadow:0 0 10px #ff7ac8;
+padding:20px;
+font-size:16px;
+color:#ffd6ea;
+text-align:center;
 }
 
-@keyframes flotar{
-from{transform:translateY(-15px);}
-to{transform:translateY(15px);}
+.frases{
+padding:80px 20px;
+text-align:center;
+}
+
+.frases h2{
+font-size:45px;
+margin-bottom:30px;
+color:#ff7ac8;
+}
+
+.frases p{
+font-size:22px;
+margin:15px;
+}
+
+.carta{
+max-width:900px;
+margin:60px auto;
+padding:40px;
+background:rgba(255,255,255,.05);
+border-radius:30px;
+box-shadow:0 0 30px rgba(255,105,180,.2);
+line-height:1.8;
+font-size:20px;
 }
 
 .footer{
-position:absolute;
-bottom:20px;
-width:100%;
 text-align:center;
-font-size:18px;
-color:#ffd1ea;
+padding:50px;
+font-size:20px;
+color:#ffd6ea;
 }
 
 </style>
 </head>
 <body>
 
-<canvas id="stars"></canvas>
+<canvas class="stars" id="stars"></canvas>
 
-<div class="titulo">
+<section class="hero">
+
 <h1>Feliz Aniversario ❤️</h1>
-<p>Víctor & Linda · 1 Año Juntos</p>
+
+<h2>Víctor & Linda</h2>
+
+<div class="corazon">❤️</div>
+
+<p>Un año juntos ✨</p>
+
+</section>
+
+<section class="galeria">
+
+<div class="foto-card">
+<img src="20250705_155824.jpg">
+<div class="mensaje">
+"Desde que llegaste, mis días tienen un brillo diferente."
+</div>
 </div>
 
-<div class="centro">❤️</div>
-
-<div class="galaxia">
-
-<div class="foto f1">
-<img src="foto1.jpg">
-<span>Desde que llegaste a mi vida, todo tiene más sentido.</span>
+<div class="foto-card">
+<img src="20260405_155058.jpg">
+<div class="mensaje">
+"Contigo aprendí que el amor también puede sentirse como hogar."
+</div>
 </div>
 
-<div class="foto f2">
-<img src="foto2.jpg">
-<span>No necesito un universo entero cuando te tengo a ti.</span>
+<div class="foto-card">
+<img src="IMG-20250809-WA0007.jpg">
+<div class="mensaje">
+"Si volviera a elegir, te elegiría otra vez."
+</div>
 </div>
 
-<div class="foto f3">
-<img src="foto3.jpg">
-<span>Cada recuerdo contigo se convierte en mi favorito.</span>
+<div class="foto-card">
+<img src="IMG-20251018-WA0005.jpg">
+<div class="mensaje">
+"Gracias por cada sonrisa, cada abrazo y cada momento."
+</div>
 </div>
 
-<div class="foto f4">
-<img src="foto4.jpg">
-<span>Un año después, sigo eligiéndote todos los días.</span>
-</div>
+</section>
 
-<div class="foto f5">
-<span>Aquí irá otro recuerdo que construiremos juntos.</span>
-</div>
+<section class="frases">
 
-<div class="foto f6">
-<span>Nuestra historia todavía tiene muchas páginas por escribir.</span>
-</div>
+<h2>Para Linda ❤️</h2>
 
-<div class="foto f7">
-<span>Lo mejor de nosotros aún está por venir.</span>
-</div>
+<p>✨ Eres mi universo.</p>
+<p>💕 Mi persona favorita.</p>
+<p>🌹 Mi lugar seguro.</p>
+<p>❤️ Gracias por este año juntos.</p>
+<p>♾️ Te elegiría una y mil veces más.</p>
 
-</div>
+</section>
 
-<div class="mensaje" style="top:20%;left:8%;">Te amo ❤️</div>
-<div class="mensaje" style="top:30%;right:8%;">Mi universo ✨</div>
-<div class="mensaje" style="top:65%;left:10%;">Mi persona favorita 💕</div>
-<div class="mensaje" style="top:75%;right:10%;">Siempre tú ❤️</div>
-<div class="mensaje" style="top:50%;left:3%;">Linda ❤️</div>
-<div class="mensaje" style="top:55%;right:5%;">Víctor + Linda ♾️</div>
+<section class="carta">
+
+<h2 style="text-align:center;margin-bottom:25px;">
+Carta para ti ❤️
+</h2>
+
+<p>
+Linda:
+</p>
+
+<p>
+Hoy cumplimos un año juntos y quería hacer algo especial para recordarte lo importante que eres para mí.
+</p>
+
+<p>
+Gracias por cada sonrisa, cada conversación, cada abrazo y cada momento que hemos compartido.
+</p>
+
+<p>
+Este año ha estado lleno de recuerdos que siempre voy a guardar con cariño. Me gusta pensar que apenas estamos escribiendo los primeros capítulos de una historia muy bonita.
+</p>
+
+<p>
+No sé qué nos traerá el futuro, pero sí sé que cada día contigo vale la pena.
+</p>
+
+<p>
+Feliz aniversario, mi amor.
+</p>
+
+<p>
+Con todo mi cariño,
+<br><br>
+Víctor ❤️
+</p>
+
+</section>
 
 <div class="footer">
-Gracias por este primer año juntos. ❤️
+Víctor ❤️ Linda · 1 Año Juntos ✨
 </div>
 
 <script>
 
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
+const canvas = document.getElementById('stars');
+const ctx = canvas.getContext('2d');
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 let stars=[];
 
-for(let i=0;i<500;i++){
+for(let i=0;i<600;i++){
 stars.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
@@ -243,6 +281,7 @@ star.x=Math.random()*canvas.width;
 });
 
 requestAnimationFrame(animate);
+
 }
 
 animate();
