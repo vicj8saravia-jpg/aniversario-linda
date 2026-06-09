@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Aniversario Linda ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+background:#02020b;
+font-family:'Poppins',sans-serif;
+color:white;
+height:100vh;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.titulo{
+position:absolute;
+top:30px;
+width:100%;
+text-align:center;
+z-index:100;
+}
+
+.titulo h1{
+font-family:'Dancing Script',cursive;
+font-size:70px;
+color:#ff7ac8;
+text-shadow:0 0 25px #ff7ac8;
+}
+
+.titulo p{
+font-size:20px;
+letter-spacing:3px;
+}
+
+.galaxia{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+width:700px;
+height:700px;
+animation:girar 80s linear infinite;
+}
+
+@keyframes girar{
+from{
+transform:translate(-50%,-50%) rotate(0deg);
+}
+to{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+.centro{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:120px;
+color:#ff4da6;
+text-shadow:
+0 0 20px #ff4da6,
+0 0 40px #ff4da6,
+0 0 80px #ff4da6;
+z-index:20;
+}
+
+.foto{
+position:absolute;
+width:140px;
+height:140px;
+border-radius:20px;
+overflow:hidden;
+border:3px solid #ff7ac8;
+box-shadow:0 0 25px #ff7ac8;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(8px);
+}
+
+.foto img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.foto span{
+position:absolute;
+bottom:-55px;
+left:50%;
+transform:translateX(-50%);
+width:230px;
+font-size:13px;
+text-align:center;
+color:#ffd1ea;
+}
+
+.f1{top:0;left:280px;}
+.f2{top:120px;right:20px;}
+.f3{bottom:140px;right:40px;}
+.f4{bottom:0;left:280px;}
+.f5{bottom:140px;left:40px;}
+.f6{top:120px;left:20px;}
+.f7{top:280px;left:-60px;}
+
+.mensaje{
+position:absolute;
+color:#ff7ac8;
+font-weight:bold;
+animation:flotar 8s infinite alternate;
+text-shadow:0 0 10px #ff7ac8;
+}
+
+@keyframes flotar{
+from{transform:translateY(-15px);}
+to{transform:translateY(15px);}
+}
+
+.footer{
+position:absolute;
+bottom:20px;
+width:100%;
+text-align:center;
+font-size:18px;
+color:#ffd1ea;
+}
+
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+
+<div class="titulo">
+<h1>Feliz Aniversario ❤️</h1>
+<p>Víctor & Linda · 1 Año Juntos</p>
+</div>
+
+<div class="centro">❤️</div>
+
+<div class="galaxia">
+
+<div class="foto f1">
+<img src="foto1.jpg">
+<span>Desde que llegaste a mi vida, todo tiene más sentido.</span>
+</div>
+
+<div class="foto f2">
+<img src="foto2.jpg">
+<span>No necesito un universo entero cuando te tengo a ti.</span>
+</div>
+
+<div class="foto f3">
+<img src="foto3.jpg">
+<span>Cada recuerdo contigo se convierte en mi favorito.</span>
+</div>
+
+<div class="foto f4">
+<img src="foto4.jpg">
+<span>Un año después, sigo eligiéndote todos los días.</span>
+</div>
+
+<div class="foto f5">
+<span>Aquí irá otro recuerdo que construiremos juntos.</span>
+</div>
+
+<div class="foto f6">
+<span>Nuestra historia todavía tiene muchas páginas por escribir.</span>
+</div>
+
+<div class="foto f7">
+<span>Lo mejor de nosotros aún está por venir.</span>
+</div>
+
+</div>
+
+<div class="mensaje" style="top:20%;left:8%;">Te amo ❤️</div>
+<div class="mensaje" style="top:30%;right:8%;">Mi universo ✨</div>
+<div class="mensaje" style="top:65%;left:10%;">Mi persona favorita 💕</div>
+<div class="mensaje" style="top:75%;right:10%;">Siempre tú ❤️</div>
+<div class="mensaje" style="top:50%;left:3%;">Linda ❤️</div>
+<div class="mensaje" style="top:55%;right:5%;">Víctor + Linda ♾️</div>
+
+<div class="footer">
+Gracias por este primer año juntos. ❤️
+</div>
+
+<script>
+
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars=[];
+
+for(let i=0;i<500;i++){
+stars.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+s:Math.random()*1.5
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+stars.forEach(star=>{
+
+ctx.beginPath();
+ctx.arc(star.x,star.y,star.r,0,Math.PI*2);
+ctx.fill();
+
+star.y+=star.s;
+
+if(star.y>canvas.height){
+star.y=0;
+star.x=Math.random()*canvas.width;
+}
+
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
